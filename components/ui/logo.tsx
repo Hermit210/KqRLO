@@ -1,92 +1,171 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 interface LogoProps {
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: number;
   className?: string;
+  animate?: boolean;
 }
 
-export function Logo({ size = "md", className = "" }: LogoProps) {
-  const sizeClasses = {
-    sm: "text-xl",
-    md: "text-2xl",
-    lg: "text-4xl",
-    xl: "text-6xl"
+export function Logo({ size = 40, className = "", animate = true }: LogoProps) {
+  const logoVariants = {
+    initial: { 
+      scale: 1, 
+      rotateY: 0, 
+      rotateX: 0,
+      rotateZ: 0
+    },
+    hover: { 
+      scale: 1.15, 
+      rotateY: 180,
+      rotateX: 15,
+      rotateZ: 5
+    },
+    pulse: { 
+      scale: [1, 1.08, 1],
+      rotateY: [0, 10, -10, 0],
+      rotateX: [0, 5, -5, 0]
+    }
   };
 
   return (
-    <motion.div 
-      className={`flex items-center space-x-3 ${className}`}
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
+    <motion.div
+      className={`relative ${className} float-3d`}
+      style={{ 
+        width: size, 
+        height: size,
+        transformStyle: 'preserve-3d'
+      }}
+      variants={logoVariants}
+      initial="initial"
+      whileHover={animate ? "hover" : undefined}
+      animate={animate ? "pulse" : undefined}
+      transition={{
+        duration: animate ? 3 : 0.8,
+        repeat: animate ? Infinity : 0,
+        ease: "easeInOut"
+      }}
     >
-      {/* KqRLO Logo */}
-      <motion.div 
-        className="relative"
-        whileHover={{ scale: 1.05 }}
-        transition={{ type: "spring", stiffness: 300 }}
-      >
-        <div className="zephyr-glass rounded-xl p-3 border-2 border-white/20">
-          <div className={`font-bold ${sizeClasses[size]} zephyr-gradient-text tracking-wider`}>
-            K<span className="text-blue-400">q</span>R<span className="text-purple-400">L</span>O
-          </div>
-        </div>
-        <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur opacity-75"></div>
-      </motion.div>
+      {/* 3D Layered Shield Eye Logo */}
+      <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
+        {/* Back Layer */}
+        <svg
+          width={size}
+          height={size}
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute inset-0 opacity-30"
+          style={{ transform: 'translateZ(-10px)' }}
+        >
+          <path
+            d="M50 5 L85 20 L85 45 C85 65 70 85 50 95 C30 85 15 65 15 45 L15 20 Z"
+            stroke="#ffffff"
+            strokeWidth="3"
+            fill="rgba(255, 255, 255, 0.02)"
+          />
+        </svg>
 
-      {/* USAF E.C.H.O. Text */}
-      <div className="flex flex-col">
-        <motion.div 
-          className="text-sm font-semibold text-blue-300 tracking-widest"
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
+        {/* Main Logo Layer */}
+        <svg
+          width={size}
+          height={size}
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="relative z-10 neon-glow-subtle"
+          style={{ filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))' }}
         >
-          U S A F
-        </motion.div>
-        <motion.div 
-          className="text-lg font-bold text-white tracking-wider"
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          {/* Shield Outline - Thicker for bold effect */}
+          <path
+            d="M50 5 L85 20 L85 45 C85 65 70 85 50 95 C30 85 15 65 15 45 L15 20 Z"
+            stroke="#ffffff"
+            strokeWidth="3"
+            fill="rgba(255, 255, 255, 0.05)"
+          />
+          
+          {/* Inner Shield Layers */}
+          <path
+            d="M50 12 L78 25 L78 45 C78 62 66 78 50 86 C34 78 22 62 22 45 L22 25 Z"
+            stroke="#ffffff"
+            strokeWidth="2"
+            fill="rgba(255, 255, 255, 0.08)"
+          />
+          
+          {/* Eye Shape - Enhanced */}
+          <ellipse
+            cx="50"
+            cy="45"
+            rx="25"
+            ry="15"
+            stroke="#ffffff"
+            strokeWidth="3"
+            fill="rgba(255, 255, 255, 0.1)"
+          />
+          
+          {/* Eye Pupil - Larger and bolder */}
+          <circle
+            cx="50"
+            cy="45"
+            r="10"
+            fill="#ffffff"
+          />
+          
+          {/* Inner Pupil */}
+          <circle
+            cx="50"
+            cy="45"
+            r="5"
+            fill="#000000"
+          />
+          
+          {/* Enhanced Flowing Lines */}
+          <path
+            d="M25 35 Q35 30 45 35 Q55 40 65 35 Q75 30 85 35"
+            stroke="#ffffff"
+            strokeWidth="2"
+            fill="none"
+            opacity="0.8"
+          />
+          <path
+            d="M25 55 Q35 60 45 55 Q55 50 65 55 Q75 60 85 55"
+            stroke="#ffffff"
+            strokeWidth="2"
+            fill="none"
+            opacity="0.8"
+          />
+          
+          {/* Additional geometric elements */}
+          <circle cx="35" cy="30" r="2" fill="#ffffff" opacity="0.6" />
+          <circle cx="65" cy="30" r="2" fill="#ffffff" opacity="0.6" />
+          <circle cx="35" cy="60" r="2" fill="#ffffff" opacity="0.6" />
+          <circle cx="65" cy="60" r="2" fill="#ffffff" opacity="0.6" />
+        </svg>
+
+        {/* Front Highlight Layer */}
+        <svg
+          width={size}
+          height={size}
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute inset-0 opacity-60"
+          style={{ transform: 'translateZ(5px)' }}
         >
-          E . C . H . O .
-        </motion.div>
-        <motion.div 
-          className="text-xs text-gray-400 tracking-wide"
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          Enhanced Cryptographic Hybrid Operations
-        </motion.div>
+          <path
+            d="M35 25 Q50 20 65 25"
+            stroke="#ffffff"
+            strokeWidth="1"
+            fill="none"
+            opacity="0.8"
+          />
+        </svg>
       </div>
-    </motion.div>
-  );
-}
-
-export function LogoIcon({ size = "md", className = "" }: LogoProps) {
-  const sizeClasses = {
-    sm: "w-8 h-8 text-lg",
-    md: "w-12 h-12 text-xl",
-    lg: "w-16 h-16 text-2xl",
-    xl: "w-24 h-24 text-4xl"
-  };
-
-  return (
-    <motion.div 
-      className={`${sizeClasses[size]} ${className} relative flex items-center justify-center`}
-      whileHover={{ scale: 1.1, rotate: 5 }}
-      transition={{ type: "spring", stiffness: 300 }}
-    >
-      <div className="zephyr-glass rounded-xl w-full h-full flex items-center justify-center border-2 border-white/20">
-        <div className="font-bold zephyr-gradient-text tracking-wider">
-          K<span className="text-blue-400">q</span>R<span className="text-purple-400">L</span>O
-        </div>
-      </div>
-      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur opacity-75"></div>
+      
+      {/* Enhanced Glow Effects */}
+      <div className="absolute inset-0 bg-white/15 rounded-full blur-xl opacity-60 pulse-glow-3d" />
+      <div className="absolute inset-0 bg-white/5 rounded-full blur-2xl opacity-40" />
     </motion.div>
   );
 }

@@ -1,212 +1,154 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Shield, Lock, Eye, Key, Zap, Globe, CheckCircle, Star } from 'lucide-react';
+import { Shield, Lock, Eye, Key, Zap, Globe, Database, Cpu, Network } from 'lucide-react';
 
 export function Features() {
-  // Main feature (Zero-Knowledge Proofs)
-  const mainFeature = {
-    title: "Zero-Knowledge Proofs",
-    subtitle: "Mathematical Privacy Guarantees",
-    description: "Prove statements about your identity without revealing any underlying data. Built on cutting-edge cryptographic protocols that provide mathematical certainty of privacy.",
-    icon: <Shield className="h-8 w-8" />,
-    stats: {
-      privacy: "100%",
-      speed: "< 2s",
-      security: "Quantum-Safe"
-    },
-    benefits: [
-      "Cryptographic proof generation without data exposure",
-      "Mathematical guarantees of privacy protection",
-      "Cross-chain compatibility and interoperability",
-      "Quantum-resistant security protocols",
-      "Real-time verification with zero latency"
-    ]
-  };
-
-  // Other features for the right column
-  const otherFeatures = [
+  const features = [
     {
-      title: "Self-Sovereign Identity",
-      description: "Complete control over your digital identity with no central authority.",
-      icon: <Key className="h-6 w-6" />,
-      color: "from-[#58A6FF] to-[#7C3AED]"
+      title: "ZERO-KNOWLEDGE PROOFS",
+      description: "Prove statements about your identity without revealing any underlying data using advanced cryptographic protocols.",
+      icon: <Shield className="h-8 w-8 text-white" />,
+      color: "from-blue-500/20 to-purple-500/20"
     },
     {
-      title: "Advanced Encryption",
-      description: "Military-grade AES-256 encryption with quantum-resistant algorithms.",
-      icon: <Lock className="h-6 w-6" />,
-      color: "from-[#10B981] to-[#059669]"
+      title: "QUANTUM-RESISTANT ENCRYPTION",
+      description: "Future-proof security with post-quantum cryptographic algorithms that protect against quantum computing threats.",
+      icon: <Lock className="h-8 w-8 text-white" />,
+      color: "from-green-500/20 to-blue-500/20"
     },
     {
-      title: "Privacy-First Architecture",
-      description: "Built from the ground up with privacy as the core design principle.",
-      icon: <Eye className="h-6 w-6" />,
-      color: "from-[#F59E0B] to-[#D97706]"
+      title: "BIOMETRIC PRIVACY VAULT",
+      description: "Secure biometric data storage with homomorphic encryption ensuring your biological identity stays private.",
+      icon: <Eye className="h-8 w-8 text-white" />,
+      color: "from-purple-500/20 to-pink-500/20"
     },
     {
-      title: "Real-Time Controls",
-      description: "Granular privacy controls that work instantly with sub-100ms response.",
-      icon: <Zap className="h-6 w-6" />,
-      color: "from-[#EF4444] to-[#DC2626]"
+      title: "SELF-SOVEREIGN IDENTITY",
+      description: "Complete control over your digital identity with decentralized key management and no central authority.",
+      icon: <Key className="h-8 w-8 text-white" />,
+      color: "from-orange-500/20 to-red-500/20"
     },
     {
-      title: "Cross-Chain Privacy",
-      description: "Universal protection across 10+ blockchain networks seamlessly.",
-      icon: <Globe className="h-6 w-6" />,
-      color: "from-[#8B5CF6] to-[#7C3AED]"
+      title: "REAL-TIME VERIFICATION",
+      description: "Lightning-fast identity verification with sub-100ms response times using optimized zk-SNARK circuits.",
+      icon: <Zap className="h-8 w-8 text-white" />,
+      color: "from-yellow-500/20 to-orange-500/20"
+    },
+    {
+      title: "CROSS-CHAIN INTEROPERABILITY",
+      description: "Universal identity verification across multiple blockchain networks with seamless protocol bridging.",
+      icon: <Globe className="h-8 w-8 text-white" />,
+      color: "from-teal-500/20 to-green-500/20"
+    },
+    {
+      title: "ENCRYPTED DATA SHARDING",
+      description: "Distributed data storage with advanced sharding techniques ensuring no single point of failure.",
+      icon: <Database className="h-8 w-8 text-white" />,
+      color: "from-indigo-500/20 to-blue-500/20"
+    },
+    {
+      title: "AI-POWERED THREAT DETECTION",
+      description: "Machine learning algorithms continuously monitor and protect against identity theft and fraud attempts.",
+      icon: <Cpu className="h-8 w-8 text-white" />,
+      color: "from-pink-500/20 to-purple-500/20"
+    },
+    {
+      title: "DECENTRALIZED NETWORK",
+      description: "Peer-to-peer verification network with consensus mechanisms ensuring trust without intermediaries.",
+      icon: <Network className="h-8 w-8 text-white" />,
+      color: "from-cyan-500/20 to-teal-500/20"
     }
   ];
 
   return (
-    <section id="features" className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+    <section id="features" className="min-h-screen py-20 bg-black relative overflow-hidden">
+      {/* 3D Protection Grid Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }}></div>
+      </div>
+
+      {/* Floating 3D Protection Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-20 w-16 h-16 border-2 border-white/20 rotate-45 animate-spin-slow"></div>
+        <div className="absolute top-40 right-32 w-12 h-12 border border-white/30 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-40 left-32 w-20 h-20 border border-white/15 rotate-12 animate-bounce"></div>
+        <div className="absolute bottom-20 right-20 w-8 h-8 bg-white/10 rounded-full animate-pulse"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
-            <Star className="h-4 w-4 text-primary mr-2" />
-            <span className="text-sm text-primary font-medium">Advanced Features</span>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-foreground to-foreground bg-clip-text text-transparent">
-              Cutting-Edge Privacy Technology
-            </span>
+          <h2 className="text-3d-title text-white mb-8 leading-tight">
+            ADVANCED PROTECTION
+            <br />
+            <span className="text-3d-embossed text-white/80">FEATURES</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Revolutionary features that set new standards for digital identity protection and zero-knowledge verification.
+          <p className="text-3d-body text-xl text-white font-bold max-w-4xl mx-auto leading-relaxed">
+            Revolutionary security features that set new standards for digital identity protection 
+            and zero-knowledge verification in the modern world.
           </p>
         </motion.div>
 
-        {/* Two-Column Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          
-          {/* Left Column - Main Feature (Zero-Knowledge Proofs) */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="bg-card border border-border rounded-2xl p-8 shadow-2xl hover:shadow-primary/10 hover:shadow-2xl transition-all duration-300"
-          >
-            {/* Main Feature Icon */}
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-2xl mb-6">
-              {mainFeature.icon}
-            </div>
-
-            {/* Main Feature Content */}
-            <h3 className="text-3xl font-bold text-card-foreground mb-2">
-              {mainFeature.title}
-            </h3>
-            <p className="text-primary text-sm font-medium mb-4">
-              {mainFeature.subtitle}
-            </p>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              {mainFeature.description}
-            </p>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-3 gap-4 mb-8">
-              {Object.entries(mainFeature.stats).map(([key, value]) => (
-                <div key={key} className="text-center p-4 bg-background rounded-lg border border-muted">
-                  <div className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    {value}
-                  </div>
-                  <div className="text-xs text-muted-foreground capitalize mt-1">{key}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Benefits List */}
-            <div className="space-y-3">
-              <h4 className="text-lg font-semibold text-card-foreground mb-4">Key Benefits:</h4>
-              {mainFeature.benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-start space-x-3"
-                >
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-muted-foreground text-sm leading-relaxed">{benefit}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Right Column - Other Features */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            {otherFeatures.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-card border border-border rounded-xl p-6 hover:bg-muted hover:border-primary/30 transition-all duration-300 group"
-              >
-                <div className="flex items-start space-x-4">
-                  {/* Feature Icon */}
-                  <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-r ${feature.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                    {feature.icon}
-                  </div>
-                  
-                  {/* Feature Content */}
-                  <div className="flex-1">
-                    <h4 className="text-lg font-semibold text-card-foreground mb-2 group-hover:text-primary transition-colors duration-300">
-                      {feature.title}
-                    </h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {feature.description}
-                    </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group relative"
+            >
+              {/* 3D Card Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 rounded-2xl backdrop-blur-sm border border-white/20 transform group-hover:scale-105 transition-all duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 rounded-2xl transition-all duration-300" style={{background: `linear-gradient(135deg, ${feature.color.split(' ')[1]}, ${feature.color.split(' ')[3]})`}}></div>
+              
+              {/* Card Content */}
+              <div className="relative p-8 text-center">
+                {/* 3D Icon Container */}
+                <div className="flex justify-center mb-6">
+                  <div className="relative">
+                    <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/30 backdrop-blur-sm group-hover:border-white/50 transition-all duration-300">
+                      {feature.icon}
+                    </div>
+                    <div className="absolute inset-0 bg-white/5 rounded-2xl blur-xl group-hover:bg-white/10 transition-all duration-300"></div>
                   </div>
                 </div>
                 
-                {/* Divider (except for last item) */}
-                {index < otherFeatures.length - 1 && (
-                  <div className="mt-6 pt-6 border-t border-muted"></div>
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
+                <h3 className="text-3d-floating text-xl font-black text-white mb-4 tracking-wide">
+                  {feature.title}
+                </h3>
+                <p className="text-3d-body text-white/90 font-bold leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Bottom CTA Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-20 text-center"
         >
-          <div className="bg-card border border-border rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-card-foreground mb-4">
-              Ready to Experience Zero-Knowledge Privacy?
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              Join thousands of users who trust KqRLO for their identity verification needs.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-primary/25"
-            >
-              <Shield className="h-5 w-5 mr-2 inline" />
-              Start Verification
-            </motion.button>
-          </div>
+          <button className="btn-primary group">
+            <Shield className="h-6 w-6 mr-3 group-hover:text-white transition-colors" />
+            START VERIFICATION
+          </button>
         </motion.div>
       </div>
     </section>

@@ -8,13 +8,25 @@ export function ThemeSwitcher() {
 
   return (
     <motion.button
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors duration-200"
+      className={`p-3 rounded-lg border-2 transition-all duration-300 backdrop-blur-sm ${
+        theme === 'dark' 
+          ? 'border-white/30 text-white hover:bg-white/10 hover:border-white/60' 
+          : 'border-black/30 text-black hover:bg-black/10 hover:border-black/60'
+      }`}
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
-      {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+      <motion.div
+        initial={false}
+        animate={{ 
+          rotate: theme === 'dark' ? 0 : 180
+        }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      >
+        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+      </motion.div>
     </motion.button>
   );
 }

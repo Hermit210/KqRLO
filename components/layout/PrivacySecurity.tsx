@@ -3,31 +3,34 @@
 import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, Key, Database, Globe, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
+import { SecurityMatrix3D } from '@/components/ui/SecurityMatrix3D';
+import { DataFlow3D } from '@/components/ui/DataFlow3D';
+import { SecurityShield3D } from '@/components/ui/SecurityShield3D';
 
 export function PrivacySecurity() {
   const [activeTab, setActiveTab] = useState('privacy');
 
   const privacyGuarantees = [
     {
-      icon: <Shield className="h-6 w-6" />,
+      icon: <Shield className="h-6 w-6 icon-outline" />,
       title: "Zero-Knowledge Proofs",
       description: "Mathematical proof of identity without revealing personal data",
       details: "Using zk-SNARKs (Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge), we can verify your credentials without ever seeing them."
     },
     {
-      icon: <Lock className="h-6 w-6" />,
+      icon: <Lock className="h-6 w-6 icon-outline" />,
       title: "End-to-End Encryption",
       description: "All communications encrypted with AES-256",
       details: "Every piece of data is encrypted before leaving your device and remains encrypted throughout the entire verification process."
     },
     {
-      icon: <Eye className="h-6 w-6" />,
+      icon: <Eye className="h-6 w-6 icon-outline" />,
       title: "No Data Collection",
       description: "We never store, sell, or share your personal information",
       details: "Our system is designed to verify without storing. Once verification is complete, no trace of your personal data remains."
     },
     {
-      icon: <Key className="h-6 w-6" />,
+      icon: <Key className="h-6 w-6 icon-outline" />,
       title: "Self-Sovereign Identity",
       description: "You control your digital identity completely",
       details: "Your identity credentials are stored locally on your device. You decide when and how to share verification proofs."
@@ -36,19 +39,19 @@ export function PrivacySecurity() {
 
   const securityFeatures = [
     {
-      icon: <Database className="h-6 w-6" />,
+      icon: <Database className="h-6 w-6 icon-outline" />,
       title: "Decentralized Architecture",
       description: "No central point of failure or data breach risk",
       status: "Active"
     },
     {
-      icon: <Globe className="h-6 w-6" />,
+      icon: <Globe className="h-6 w-6 icon-outline" />,
       title: "Open Source",
       description: "Transparent code audited by security experts",
       status: "Verified"
     },
     {
-      icon: <Shield className="h-6 w-6" />,
+      icon: <Shield className="h-6 w-6 icon-outline" />,
       title: "Quantum-Resistant",
       description: "Future-proof against quantum computing attacks",
       status: "Ready"
@@ -56,8 +59,19 @@ export function PrivacySecurity() {
   ];
 
   return (
-    <section id="privacy-security" className="py-24 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="privacy-security" className="w-full h-full py-24 relative overflow-hidden flowing-bg cinematic-depth">
+      {/* 3D Security Shield Background */}
+      <SecurityShield3D />
+      <SecurityMatrix3D />
+      <DataFlow3D />
+      
+      {/* Additional Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-white/2 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-white/1 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -65,24 +79,24 @@ export function PrivacySecurity() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full mb-6">
-            <Shield className="h-4 w-4 text-green-400 mr-2" />
-            <span className="text-sm text-green-300 font-medium">Privacy & Security</span>
+          <div className="inline-flex items-center px-6 py-3 glass border border-white/20 rounded-full mb-6 neon-glow-subtle layered-card">
+            <Shield className="h-4 w-4 text-white mr-2" />
+            <span className="text-sm text-white font-black tracking-wider">PRIVACY & SECURITY</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-foreground to-foreground bg-clip-text text-transparent">
-              Your Privacy is
+          <h2 className="text-4xl md:text-5xl font-black mb-6 text-3d tracking-wider">
+            <span className="text-white">
+              YOUR PRIVACY IS
             </span>
             <br />
-            <span className="bg-gradient-to-r from-green-400 to-primary bg-clip-text text-transparent">
-              Mathematically Guaranteed
+            <span className="text-gray-300">
+              MATHEMATICALLY GUARANTEED
             </span>
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Built with cutting-edge cryptographic techniques to ensure your personal 
-            information never leaves your device while still enabling secure verification.
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto font-bold tracking-wide">
+            BUILT WITH CUTTING-EDGE CRYPTOGRAPHIC TECHNIQUES TO ENSURE YOUR PERSONAL 
+            INFORMATION NEVER LEAVES YOUR DEVICE WHILE STILL ENABLING SECURE VERIFICATION.
           </p>
         </motion.div>
 
@@ -93,26 +107,26 @@ export function PrivacySecurity() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center mb-12"
         >
-          <div className="bg-card/50 backdrop-blur-lg border border-border rounded-lg p-1">
+          <div className="glass layered-card border border-white/20 rounded-lg p-1">
             <button
               onClick={() => setActiveTab('privacy')}
-              className={`px-6 py-3 rounded-md font-medium transition-all duration-300 ${
+              className={`px-6 py-3 rounded-md font-black tracking-wider transition-all duration-500 ${
                 activeTab === 'privacy'
-                  ? 'bg-primary text-primary-foreground shadow-lg'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                  ? 'bg-white/10 text-white neon-glow-subtle'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
-              Privacy Guarantees
+              PRIVACY GUARANTEES
             </button>
             <button
               onClick={() => setActiveTab('security')}
-              className={`px-6 py-3 rounded-md font-medium transition-all duration-300 ${
+              className={`px-6 py-3 rounded-md font-black tracking-wider transition-all duration-500 ${
                 activeTab === 'security'
-                  ? 'bg-primary text-primary-foreground shadow-lg'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                  ? 'bg-white/10 text-white neon-glow-subtle'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
-              Security Features
+              SECURITY FEATURES
             </button>
           </div>
         </motion.div>
@@ -131,21 +145,21 @@ export function PrivacySecurity() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-card/50 backdrop-blur-lg border border-border rounded-2xl p-8 hover:bg-card/70 transition-all duration-300"
+                className="card-3d layered-card holographic p-8 hover:neon-glow transition-all duration-500"
               >
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 p-3 bg-gradient-to-r from-primary to-accent rounded-lg">
+                  <div className="flex-shrink-0 p-3 border border-white/20 wireframe rounded-lg float-3d">
                     {guarantee.icon}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-card-foreground mb-2">
-                      {guarantee.title}
+                    <h3 className="text-xl font-black text-white mb-2 tracking-wider text-3d">
+                      {guarantee.title.toUpperCase()}
                     </h3>
-                    <p className="text-muted-foreground mb-4">
-                      {guarantee.description}
+                    <p className="text-gray-400 mb-4 font-bold tracking-wide">
+                      {guarantee.description.toUpperCase()}
                     </p>
-                    <p className="text-sm text-muted-foreground/80 leading-relaxed">
-                      {guarantee.details}
+                    <p className="text-sm text-gray-500 leading-relaxed font-bold tracking-wide">
+                      {guarantee.details.toUpperCase()}
                     </p>
                   </div>
                 </div>
@@ -168,20 +182,20 @@ export function PrivacySecurity() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-card/50 backdrop-blur-lg border border-border rounded-2xl p-8 text-center hover:bg-card/70 transition-all duration-300"
+                className="card-3d layered-card p-8 text-center hover:neon-glow transition-all duration-500"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-primary rounded-full mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 border border-white/20 wireframe rounded-lg mb-6 float-3d">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-card-foreground mb-3">
-                  {feature.title}
+                <h3 className="text-xl font-black text-white mb-3 tracking-wider text-3d">
+                  {feature.title.toUpperCase()}
                 </h3>
-                <p className="text-muted-foreground mb-4">
-                  {feature.description}
+                <p className="text-gray-400 mb-4 font-bold tracking-wide">
+                  {feature.description.toUpperCase()}
                 </p>
-                <div className="inline-flex items-center px-3 py-1 bg-green-500/20 border border-green-500/30 rounded-full">
-                  <CheckCircle className="h-4 w-4 text-green-400 mr-2" />
-                  <span className="text-sm text-green-300 font-medium">{feature.status}</span>
+                <div className="inline-flex items-center px-3 py-1 glass border border-white/20 rounded-full neon-glow-subtle">
+                  <CheckCircle className="h-4 w-4 text-white mr-2" />
+                  <span className="text-sm text-white font-black tracking-wider">{feature.status.toUpperCase()}</span>
                 </div>
               </motion.div>
             ))}

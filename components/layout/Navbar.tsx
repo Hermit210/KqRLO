@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Shield, Lock, Eye, Globe } from 'lucide-react';
+import { Menu, X, Shield, Lock } from 'lucide-react';
 import { XConnectButton } from '@/components/XConnectButton';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
+import { Status3D } from '@/components/ui/Status3D';
+import { Logo } from '@/components/ui/Logo';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,10 +26,8 @@ export function Navbar() {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'Features', href: '#features' },
-    { name: 'Privacy & Security', href: '#privacy-security' },
-    // { name: 'How It Works', href: '#how-it-works' },
-    { name: 'About', href: '#about' },
-    // { name: 'Contact', href: '#contact' }
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '#contact' }
   ];
 
   // const dropdownItems = [
@@ -43,42 +43,39 @@ export function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? 'bg-background/95 backdrop-blur-lg border-b border-border py-2'
-        : 'bg-transparent py-4'
+        ? 'bg-black/90 backdrop-blur-xl border-b border-white/20 py-3'
+        : 'bg-transparent py-6'
         }`}
     >
       <div className=" mx-auto px-4 sm:px-6 lg:px-20">
         <div className="flex items-center justify-between">
-          {/* Logo with Enhanced Responsive Spacing */}
+          {/* Logo with Fuego Styling */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-3 pr-6 sm:pr-8 md:pr-12 lg:pr-16 xl:pr-20"
+            className="flex items-center space-x-4"
           >
-            <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-lg">
-                <Shield className="h-6 w-6 text-primary-foreground" />
-              </div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/80 rounded-xl blur opacity-30"></div>
-            </div>
+            <Logo size={48} className="mr-3" />
             <div className="flex flex-col">
-              <span className="text-xl font-bold bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
-                KqRLO
+              <span className="text-2xl font-black text-white tracking-wider">
+                KQRLO
               </span>
-              <span className="text-xs text-muted-foreground -mt-1">Zero-Knowledge</span>
+              <span className="text-xs text-white/80 font-bold tracking-wide uppercase">
+                Zero-Knowledge Identity
+              </span>
             </div>
           </motion.div>
           <div className='flex flex-row justify-center items-center'>
-            {/* Desktop Navigation with Perfect Alignment and Consistent Spacing */}
-            <div className="hidden lg:flex items-baseline space-x-1 flex-1 justify-center px-4">
+            {/* Desktop Navigation with Fuego Styling */}
+            <div className="hidden lg:flex items-baseline space-x-8 flex-1 justify-center px-4">
               {navItems.map((item) => (
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium relative group px-3 py-2 whitespace-nowrap text-sm leading-5"
+                  className="text-white hover:text-white/80 transition-all duration-300 font-medium relative group px-3 py-2 text-sm tracking-wider uppercase"
                   whileHover={{ y: -2 }}
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/80 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300 shadow-sm shadow-white/50"></span>
                 </motion.a>
               ))}
 
@@ -131,7 +128,7 @@ export function Navbar() {
               {/* Mobile Menu Button */}
               <motion.button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden p-2 rounded-lg bg-secondary border border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200"
+                className="lg:hidden p-2 rounded-lg border-2 border-black dark:border-white text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -150,14 +147,14 @@ export function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden mt-4 pb-4 border-t border-border"
+              className="lg:hidden mt-4 pb-4 border-t border-white/10"
             >
               <div className="flex flex-col space-y-4 pt-4">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium py-2"
+                    className="text-black dark:text-white hover:text-orange-500 transition-colors duration-300 font-bold text-medium-bold py-2 px-4 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 opacity-80 hover:opacity-100"
                     onClick={() => setIsMenuOpen(false)}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -188,9 +185,9 @@ export function Navbar() {
                 </div>
 
                 {/* Mobile Privacy Status */}
-                <div className="flex items-center justify-center space-x-2 px-3 py-2 bg-green-500/10 border border-green-500/20 rounded-lg mt-2">
-                  <Lock className="h-4 w-4 text-green-500" />
-                  <span className="text-sm text-green-500 font-medium">End-to-End Encrypted</span>
+                <div className="flex items-center justify-center space-x-2 px-3 py-2 bg-white/10 border border-white/20 rounded-lg mt-2">
+                  <Lock className="h-4 w-4 text-white" />
+                  <span className="text-sm text-white font-medium">End-to-End Encrypted</span>
                 </div>
               </div>
             </motion.div>
@@ -203,27 +200,11 @@ export function Navbar() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="hidden md:block absolute top-full left-0 right-0 bg-secondary/50 backdrop-blur-sm border-b border-border/50"
+        className="hidden md:block absolute top-full left-0 right-0 glass border-b border-white/10"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-          <div className="flex items-center justify-center space-x-8 text-xs text-muted-foreground">
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-green-500 font-medium">Secure</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Eye className="h-3 w-3 text-primary" />
-              <span>No Data Selling</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Lock className="h-3 w-3 text-green-500" />
-              <span>End-to-End Encrypted</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Globe className="h-3 w-3 text-primary" />
-              <span>Open Source</span>
-            </div>
-            
+          <div className="flex items-center justify-center">
+            <Status3D />
           </div>
         </div>
       </motion.div>

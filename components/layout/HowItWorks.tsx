@@ -1,171 +1,250 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Wallet, Shield, Settings, CheckCircle, ArrowRight, Play } from 'lucide-react';
+import { Shield, Upload, Cpu, CheckCircle, Lock, Eye, Key, Database } from 'lucide-react';
 
 export function HowItWorks() {
   const steps = [
     {
       number: "01",
-      title: "Connect Your Wallet",
-      description: "Securely connect your Web3 wallet to begin the privacy-first identity verification process.",
-      icon: <Wallet className="h-8 w-8" />,
-      color: "from-primary to-accent",
-      details: [
-        "Multi-wallet support (MetaMask, WalletConnect, etc.)",
-        "Secure connection with end-to-end encryption",
-        "No personal data collection during connection",
-        "Instant verification and authentication"
-      ]
+      title: "UPLOAD CREDENTIALS",
+      description: "Securely upload your identity documents to your local device. All processing happens offline.",
+      icon: <Upload className="h-8 w-8 text-white" />,
+      details: "Your documents never leave your device. Advanced local processing ensures complete privacy."
     },
     {
-      number: "02",
-      title: "Generate Zero-Knowledge Proof",
-      description: "Our advanced algorithms create cryptographic proofs that verify your identity without revealing any personal data.",
-      icon: <Shield className="h-8 w-8" />,
-      color: "from-green-500 to-green-600",
-      details: [
-        "Advanced zk-SNARKs cryptographic proof generation",
-        "Mathematically guaranteed zero data leakage",
-        "Quantum-resistant security algorithms",
-        "Cross-chain compatibility and interoperability"
-      ]
+      number: "02", 
+      title: "GENERATE ZK-PROOF",
+      description: "Our quantum-resistant algorithms create mathematical proof of your identity without revealing data.",
+      icon: <Cpu className="h-8 w-8 text-white" />,
+      details: "Zero-knowledge cryptography generates verifiable proofs while keeping your information private."
     },
     {
       number: "03",
-      title: "Set Privacy Preferences",
-      description: "Customize exactly what information you want to reveal and to whom. Full control over your data.",
-      icon: <Settings className="h-8 w-8" />,
-      color: "from-[#F59E0B] to-[#D97706]",
-      details: [
-        "Granular privacy controls for each data point",
-        "Real-time adjustments and instant updates",
-        "Context-aware privacy settings",
-        "Temporary permissions with auto-expiry"
-      ]
-    },
-    {
-      number: "04",
-      title: "Verify & Interact",
-      description: "Use your privacy-protected identity across any platform or service that supports our protocol.",
-      icon: <CheckCircle className="h-8 w-8" />,
-      color: "from-[#EF4444] to-[#DC2626]",
-      details: [
-        "Cross-platform compatibility with major services",
-        "Instant verification without data exposure",
-        "No vendor lock-in or proprietary restrictions",
-        "Universal standards and open protocols"
-      ]
+      title: "INSTANT VERIFICATION", 
+      description: "Present your proof to any verifier. They can confirm your identity without seeing personal data.",
+      icon: <CheckCircle className="h-8 w-8 text-white" />,
+      details: "Mathematical certainty meets complete privacy. Verification in under 50 milliseconds."
     }
   ];
 
+  const securityLayers = [
+    { icon: <Lock className="h-6 w-6" />, name: "AES-256 ENCRYPTION", active: true },
+    { icon: <Eye className="h-6 w-6" />, name: "ZERO-KNOWLEDGE PROOFS", active: true },
+    { icon: <Key className="h-6 w-6" />, name: "QUANTUM-RESISTANT", active: true },
+    { icon: <Database className="h-6 w-6" />, name: "DECENTRALIZED STORAGE", active: true }
+  ];
+
   return (
-    <section id="how-it-works" className="py-24 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="min-h-screen py-20 bg-black relative overflow-hidden">
+      {/* 3D Process Flow Background */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M60 10L110 35v50L60 110L10 85V35z'/%3E%3Cpath d='M60 30L90 45v30L60 90L30 75V45z'/%3E%3Ccircle cx='60' cy='60' r='15'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}></div>
+      </div>
+
+      {/* Floating 3D Process Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* 3D Process Nodes */}
+        <div className="absolute top-20 left-20 w-8 h-8 bg-white/10 rounded-full animate-pulse"></div>
+        <div className="absolute top-40 right-24 w-6 h-6 border-2 border-white/20 rotate-45 animate-spin-slow"></div>
+        <div className="absolute bottom-32 left-32 w-10 h-10 border border-white/15 rounded-full animate-bounce"></div>
+        <div className="absolute bottom-16 right-20 w-5 h-5 bg-white/20 rotate-12 animate-pulse"></div>
+        
+        {/* Large 3D Process Flow */}
+        <div className="absolute top-1/2 right-12 transform -translate-y-1/2">
+          <div className="w-56 h-56 relative">
+            <div className="absolute inset-0 border-2 border-white/10 rounded-full animate-spin-slow"></div>
+            <div className="absolute inset-6 border border-white/20 rounded-full animate-pulse"></div>
+            <div className="absolute inset-12 border border-white/30 rounded-full"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <Shield className="h-10 w-10 text-white/40" />
+            </div>
+            {/* Process Flow Indicators */}
+            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white/30 rounded-full animate-pulse"></div>
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white/30 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+            <div className="absolute top-1/2 left-4 transform -translate-y-1/2 w-3 h-3 bg-white/30 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
+            <div className="absolute top-1/2 right-4 transform -translate-y-1/2 w-3 h-3 bg-white/30 rounded-full animate-pulse" style={{animationDelay: '3s'}}></div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
-            <Play className="h-4 w-4 text-primary mr-2" />
-            <span className="text-sm text-primary font-medium">How It Works</span>
-          </div>
-
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-foreground to-foreground bg-clip-text text-transparent">
-              Simple, Secure, Private
-            </span>
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-8 leading-tight">
+            HOW IT
+            <br />
+            <span className="text-white/80">WORKS</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A straightforward process to verify your identity without compromising your personal data using zero-knowledge technology.
+          <p className="text-xl text-white font-bold max-w-4xl mx-auto leading-relaxed">
+            Three simple steps to achieve mathematical proof of identity 
+            while maintaining complete privacy and security.
           </p>
         </motion.div>
 
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
+        {/* Process Steps */}
+        <div className="grid md:grid-cols-3 gap-12 mb-20">
           {steps.map((step, index) => (
             <motion.div
               key={step.number}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 group hover:shadow-lg hover:shadow-primary/10"
-              whileHover={{ y: -5 }}
+              className="group relative"
             >
-              {/* Step Number & Icon */}
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  {step.number}
-                </span>
-                <div className={`w-12 h-12 bg-gradient-to-br ${step.color} rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
-                  {step.icon}
-                </div>
-              </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-bold text-card-foreground mb-3 group-hover:text-foreground transition-colors duration-300">
-                {step.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                {step.description}
-              </p>
-
-              {/* Details */}
-              <div className="space-y-3">
-                {step.details.map((detail, detailIndex) => (
-                  <div key={detailIndex} className="flex items-start space-x-3">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-muted-foreground text-sm leading-relaxed">{detail}</span>
+              {/* 3D Step Card Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 rounded-2xl backdrop-blur-sm border border-white/20 transform group-hover:scale-105 transition-all duration-300"></div>
+              
+              {/* Step Content */}
+              <div className="relative p-8 text-center">
+                {/* Step Number */}
+                <div className="absolute -top-4 left-8">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl border-2 border-white/30 flex items-center justify-center backdrop-blur-sm">
+                    <span className="text-white font-black text-lg">{step.number}</span>
                   </div>
-                ))}
+                </div>
+
+                {/* 3D Icon Container */}
+                <div className="flex justify-center mb-8 mt-4">
+                  <div className="relative">
+                    <div className="w-24 h-24 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/30 backdrop-blur-sm group-hover:border-white/50 transition-all duration-300">
+                      {step.icon}
+                    </div>
+                    <div className="absolute inset-0 bg-white/5 rounded-2xl blur-xl group-hover:bg-white/10 transition-all duration-300"></div>
+                  </div>
+                </div>
+                
+                <h3 className="text-2xl font-black text-white mb-4 tracking-wide">
+                  {step.title}
+                </h3>
+                <p className="text-white/90 font-bold mb-4 leading-relaxed">
+                  {step.description}
+                </p>
+                <p className="text-white/70 font-medium text-sm leading-relaxed">
+                  {step.details}
+                </p>
               </div>
 
-              {/* Hover Arrow */}
-              <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <ArrowRight className="h-5 w-5 text-primary" />
-              </div>
+              {/* Connection Line (except for last step) */}
+              {index < steps.length - 1 && (
+                <div className="hidden md:block absolute top-1/2 -right-6 w-12 h-0.5 bg-white/20 transform -translate-y-1/2">
+                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-white/30 rounded-full"></div>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
 
-        {/* Call to Action */}
+        {/* Security Layers Visualization */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="mb-20"
         >
-          <div className="bg-card border border-border rounded-2xl p-8 max-w-3xl mx-auto shadow-lg">
-            <h3 className="text-2xl font-bold text-card-foreground mb-4">
-              Ready to Experience Privacy-First Identity?
+          <h3 className="text-4xl font-black text-white text-center mb-16">
+            SECURITY LAYERS
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {securityLayers.map((layer, index) => (
+              <motion.div
+                key={layer.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group relative"
+              >
+                {/* 3D Layer Card */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 rounded-2xl backdrop-blur-sm border border-white/20 transform group-hover:scale-105 transition-all duration-300"></div>
+                
+                <div className="relative p-6 text-center">
+                  <div className="flex justify-center mb-4">
+                    <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/30 backdrop-blur-sm group-hover:border-white/50 transition-all duration-300">
+                      {layer.icon}
+                    </div>
+                  </div>
+                  <h4 className="text-sm font-black text-white mb-2 tracking-wide">
+                    {layer.name}
+                  </h4>
+                  <div className="flex items-center justify-center space-x-2">
+                    <div className={`w-2 h-2 rounded-full ${layer.active ? 'bg-white animate-pulse' : 'bg-white/30'}`}></div>
+                    <span className="text-xs text-white/80 font-bold">
+                      {layer.active ? 'ACTIVE' : 'INACTIVE'}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Technical Specifications */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-12 items-center"
+        >
+          <div>
+            <h3 className="text-4xl font-black text-white mb-8">
+              TECHNICAL SPECIFICATIONS
             </h3>
-            <p className="text-muted-foreground mb-6">
-              Join thousands of users who have already secured their digital identity with zero-knowledge proofs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-primary/25"
-              >
-                <Shield className="h-5 w-5 mr-2 inline" />
-                Get Started Now
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-muted border border-border text-card-foreground hover:bg-muted/80 hover:border-primary/30 font-semibold px-8 py-3 rounded-lg transition-all duration-300"
-              >
-                <ArrowRight className="h-5 w-5 mr-2 inline" />
-                View Documentation
-              </motion.button>
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4">
+                <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                <div>
+                  <span className="text-white font-bold">Verification Speed: </span>
+                  <span className="text-white/80 font-medium">&lt;50ms average response time</span>
+                </div>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                <div>
+                  <span className="text-white font-bold">Security Level: </span>
+                  <span className="text-white/80 font-medium">256-bit quantum-resistant encryption</span>
+                </div>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                <div>
+                  <span className="text-white font-bold">Privacy Guarantee: </span>
+                  <span className="text-white/80 font-medium">Zero personal data exposure</span>
+                </div>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                <div>
+                  <span className="text-white font-bold">Compatibility: </span>
+                  <span className="text-white/80 font-medium">Cross-platform, multi-blockchain</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="relative">
+            <div className="w-full h-80 bg-white/5 rounded-2xl border-2 border-white/20 backdrop-blur-sm flex items-center justify-center">
+              <div className="text-center">
+                <div className="relative mb-6">
+                  <div className="w-24 h-24 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/30 backdrop-blur-sm mx-auto">
+                    <Cpu className="h-12 w-12 text-white" />
+                  </div>
+                  <div className="absolute inset-0 bg-white/5 rounded-2xl blur-xl"></div>
+                </div>
+                <p className="text-xl font-bold text-white">PROCESSING ENGINE</p>
+                <p className="text-white/70 font-medium mt-2">Advanced cryptographic algorithms</p>
+              </div>
             </div>
           </div>
         </motion.div>

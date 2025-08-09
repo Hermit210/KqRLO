@@ -68,7 +68,7 @@ export function XConnectButton() {
                       onClick={openConnectModal}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 border border-blue-500/20 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/20">
+                      className="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 border-2 border-white/30 hover:border-white/60 hover:shadow-lg hover:shadow-white/10 backdrop-blur-sm uppercase tracking-wider">
                       Connect Wallet
                     </motion.button>
                   );
@@ -79,7 +79,7 @@ export function XConnectButton() {
                       onClick={openChainModal}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="glass px-6 py-3 rounded-lg text-destructive font-medium hover:glow transition-all duration-300 border border-destructive/20 hover:border-destructive/40">
+                      className="bg-white/10 px-6 py-3 rounded-lg text-white font-bold hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/60 backdrop-blur-sm uppercase tracking-wider">
                       Wrong Network
                     </motion.button>
                   );
@@ -90,7 +90,7 @@ export function XConnectButton() {
                       onClick={openChainModal}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="glass px-4 py-2 rounded-lg text-foreground font-medium hover:glow transition-all duration-300 border border-primary/20 hover:border-primary/40 flex items-center space-x-2">
+                      className="bg-white/10 px-4 py-2 rounded-lg text-white font-bold hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/60 backdrop-blur-sm flex items-center space-x-2">
                       {chain.iconUrl && (
                         <Image
                           src={chain.iconUrl}
@@ -106,7 +106,7 @@ export function XConnectButton() {
                       onClick={openAccountModal}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="glass px-4 py-2 rounded-lg text-foreground font-medium hover:glow transition-all duration-300 border border-primary/20 hover:border-primary/40">
+                      className="bg-white/10 px-4 py-2 rounded-lg text-white font-bold hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/60 backdrop-blur-sm">
                       <span className="hidden sm:inline">
                         {account.displayName}
                         {account.displayBalance ? ` (${account.displayBalance})` : ''}
@@ -117,9 +117,9 @@ export function XConnectButton() {
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="glass px-4 py-2 rounded-lg border border-green-400/20 flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-green-400" />
-                        <span className="text-green-400 font-medium">Verified</span>
+                        className="bg-white/10 px-4 py-2 rounded-lg border-2 border-white/30 flex items-center space-x-2 backdrop-blur-sm">
+                        <CheckCircle className="h-4 w-4 text-white" />
+                        <span className="text-white font-bold">VERIFIED</span>
                       </motion.div>
                     )}
                   </div>

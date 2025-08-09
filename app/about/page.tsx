@@ -2,114 +2,146 @@
 
 import { motion } from 'framer-motion';
 import { Shield, Users, Globe, Zap, TrendingUp, Award } from 'lucide-react';
+import { SeahorseIllustration, WhaleIllustration, JellyfishIllustration, FuegoDots } from '@/components/ui/FuegoIllustrations';
 
 const stats = [
-  { icon: <Users className="h-8 w-8 text-blue-400" />, value: '10K+', label: 'Verified Users' },
-  { icon: <Shield className="h-8 w-8 text-green-400" />, value: '99.9%', label: 'Security Rate' },
-      { icon: <Globe className="h-8 w-8 text-zk-primary" />, value: '50+', label: 'Countries' },
-  { icon: <Zap className="h-8 w-8 text-yellow-400" />, value: '<1s', label: 'Verification Time' },
+  { icon: <Users className="h-8 w-8 text-white" />, value: '10K+', label: 'VERIFIED USERS' },
+  { icon: <Shield className="h-8 w-8 text-white" />, value: '99.9%', label: 'SECURITY RATE' },
+  { icon: <Globe className="h-8 w-8 text-white" />, value: '50+', label: 'COUNTRIES' },
+  { icon: <Zap className="h-8 w-8 text-white" />, value: '<1s', label: 'VERIFICATION TIME' },
 ];
 
 const values = [
   {
-    icon: <Shield className="h-12 w-12 text-blue-400" />,
-    title: 'Privacy First',
-    description: 'We believe privacy is a fundamental right. Our zero-knowledge approach ensures your personal data never leaves your control.'
+    icon: <Shield className="h-12 w-12 text-white" />,
+    title: 'PRIVACY FIRST',
+    description: 'WE BELIEVE PRIVACY IS A FUNDAMENTAL RIGHT. OUR ZERO-KNOWLEDGE APPROACH ENSURES YOUR PERSONAL DATA NEVER LEAVES YOUR CONTROL.'
   },
   {
-    icon: <TrendingUp className="h-12 w-12 text-green-400" />,
-    title: 'Innovation Driven',
-    description: 'Constantly pushing the boundaries of what\'s possible with cryptographic technology and blockchain innovation.'
+    icon: <TrendingUp className="h-12 w-12 text-white" />,
+    title: 'INNOVATION DRIVEN',
+    description: 'CONSTANTLY PUSHING THE BOUNDARIES OF WHAT\'S POSSIBLE WITH CRYPTOGRAPHIC TECHNOLOGY AND BLOCKCHAIN INNOVATION.'
   },
   {
-    icon: <Award className="h-12 w-12 text-zk-primary" />,
-    title: 'Excellence',
-    description: 'Committed to delivering the highest quality identity verification solutions with uncompromising security standards.'
+    icon: <Award className="h-12 w-12 text-white" />,
+    title: 'EXCELLENCE',
+    description: 'COMMITTED TO DELIVERING THE HIGHEST QUALITY IDENTITY VERIFICATION SOLUTIONS WITH UNCOMPROMISING SECURITY STANDARDS.'
   },
 ];
 
 export default function AboutPage() {
   return (
-    <section id="about" className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 zephyr-heading">
-            <span className="zephyr-gradient-text">
-              About KqRLO
-            </span>
-          </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-            We&apos;re building the future of digital identity verification, where privacy 
-            and security aren&apos;t just features—they&apos;re fundamental principles.
-          </p>
-        </motion.div>
+    <div className="fuego-scroll-container">
+      {/* First Section - White Background */}
+      <section className="fuego-section fuego-section-white">
+        <FuegoDots count={15} />
+        <SeahorseIllustration className="fuego-seahorse" />
 
-        {/* Stats Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="zephyr-card p-6 text-center zephyr-hover">
-                <div className="flex justify-center mb-3">
-                  {stat.icon}
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="fuego-heading text-black mb-6"
+          >
+            About KQRLO
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="fuego-body text-black max-w-3xl mx-auto"
+          >
+            We&apos;re building the future of digital identity verification, where privacy
+            and security aren&apos;t just features—they&apos;re fundamental principles.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Second Section - Black Background with Stats */}
+      <section className="fuego-section fuego-section-black">
+        <FuegoDots count={20} />
+        <JellyfishIllustration className="fuego-jellyfish" />
+
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
+          >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <div className="flex justify-center mb-4">
+                  <div className="w-12 h-12 border-2 border-white rounded-lg flex items-center justify-center">
+                    {stat.icon}
+                  </div>
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-white mb-1">
+                <div className="fuego-subheading text-white mb-2">
                   {stat.value}
                 </div>
-                <div className="text-white/60 text-sm">
+                <div className="fuego-body text-white opacity-80">
                   {stat.label}
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Mission Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <div className="zephyr-card p-8 md:p-12 text-center zephyr-hover">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 zephyr-heading">
-              Our Mission
-            </h3>
-            <p className="text-lg text-white/80 leading-relaxed max-w-4xl mx-auto">
-              To democratize identity verification by making it accessible, secure, and private for everyone. 
-              We envision a world where individuals have complete control over their digital identity, 
-              free from the constraints of centralized authorities and the risks of data breaches.
-            </p>
-          </div>
-        </motion.div>
+      {/* Third Section - White Background with Mission */}
+      <section className="fuego-section fuego-section-white">
+        <FuegoDots count={12} />
+        <WhaleIllustration className="fuego-whale" />
 
-        {/* Values */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-center text-white mb-12 zephyr-heading">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h3
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="fuego-subheading text-black mb-8"
+          >
+            Our Mission
+          </motion.h3>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="fuego-body text-black leading-relaxed"
+          >
+            To democratize identity verification by making it accessible, secure, and private for everyone.
+            We envision a world where individuals have complete control over their digital identity,
+            free from the constraints of centralized authorities and the risks of data breaches.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Fourth Section - Black Background with Values */}
+      <section className="fuego-section fuego-section-black">
+        <FuegoDots count={18} />
+
+        <div className="max-w-6xl mx-auto">
+          <motion.h3
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="fuego-subheading text-center text-white mb-12"
+          >
             Our Values
-          </h3>
+          </motion.h3>
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <motion.div
@@ -118,70 +150,77 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 * index }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.02, y: -5 }}
+                className="fuego-card text-center"
               >
-                <div className="zephyr-card p-8 text-center h-full zephyr-hover">
-                  <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-6">
+                  <div className="w-16 h-16 border-2 border-white rounded-lg flex items-center justify-center">
                     {value.icon}
                   </div>
-                  <h4 className="text-xl font-semibold text-white mb-4">
-                    {value.title}
-                  </h4>
-                  <p className="text-white/70 leading-relaxed">
-                    {value.description}
-                  </p>
                 </div>
+                <h4 className="fuego-subheading text-white mb-4">
+                  {value.title}
+                </h4>
+                <p className="fuego-body text-white">
+                  {value.description}
+                </p>
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-        {/* Technology Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-16"
-        >
-          <div className="zephyr-card p-8 md:p-12 zephyr-hover">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 zephyr-heading">
-                  Cutting-Edge Technology
-                </h3>
-                <p className="text-white/80 leading-relaxed mb-6">
-                  Built on the latest advancements in zero-knowledge cryptography and blockchain technology. 
-                  Our protocol leverages zk-SNARKs to enable privacy-preserving identity verification 
-                  without compromising on security or usability.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center text-white/70">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-                    Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge (zk-SNARKs)
-                  </div>
-                  <div className="flex items-center text-white/70">
-                    <div className="w-2 h-2 bg-zk-primary rounded-full mr-3"></div>
-                    Ethereum Virtual Machine (EVM) Compatible Smart Contracts
-                  </div>
-                  <div className="flex items-center text-white/70">
-                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                    Decentralized Identity Standards (DID)
-                  </div>
+      {/* Fifth Section - White Background with Technology */}
+      <section className="fuego-section fuego-section-white">
+        <FuegoDots count={10} />
+
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="fuego-subheading text-black mb-6">
+                Cutting-Edge Technology
+              </h3>
+              <p className="fuego-body text-black mb-6">
+                Built on the latest advancements in zero-knowledge cryptography and blockchain technology.
+                Our protocol leverages ZK-SNARKs to enable privacy-preserving identity verification
+                without compromising on security or usability.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center text-black">
+                  <div className="w-2 h-2 bg-white rounded-full mr-3" />
+                  <span className="fuego-body">Zero-Knowledge Succinct Non-Interactive Arguments</span>
+                </div>
+                <div className="flex items-center text-black">
+                  <div className="w-2 h-2 bg-white rounded-full mr-3" />
+                  <span className="fuego-body">Ethereum Virtual Machine Compatible Smart Contracts</span>
+                </div>
+                <div className="flex items-center text-black">
+                  <div className="w-2 h-2 bg-white rounded-full mr-3" />
+                  <span className="fuego-body">Decentralized Identity Standards (DID)</span>
                 </div>
               </div>
-              <div className="relative">
-                <div className="w-full h-64 zephyr-card rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <Shield className="h-16 w-16 text-blue-400 mx-auto mb-4" />
-                    <p className="text-white/60">Secure Architecture</p>
-                  </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="w-full h-64 border-2 border-black rounded-lg flex items-center justify-center">
+                <div className="text-center">
+                  <Shield className="h-16 w-16 text-black mx-auto mb-4" />
+                  <p className="fuego-body text-black">Secure Architecture</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 }

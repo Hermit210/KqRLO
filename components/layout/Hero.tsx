@@ -1,39 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Lock, Eye, ArrowRight, CheckCircle, Zap, Globe, Star } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Shield, ArrowRight, CheckCircle, Lock } from 'lucide-react';
+import { ParticleSystem3D } from '@/components/ui/ParticleSystem3D';
+import { ScrollIndicator3D } from '@/components/ui/ScrollIndicator3D';
 
 export function Hero() {
-  const [currentFeature, setCurrentFeature] = useState(0);
   const [isVerifying, setIsVerifying] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-
-  const zkFeatures = [
-    {
-      icon: <Shield className="h-6 w-6" />,
-      title: "Zero-Knowledge Proofs",
-      description: "Prove your identity without revealing personal data"
-    },
-    {
-      icon: <Lock className="h-6 w-6" />,
-      title: "End-to-End Encryption",
-      description: "Military-grade encryption for all communications"
-    },
-    {
-      icon: <Eye className="h-6 w-6" />,
-      title: "Complete Privacy",
-      description: "No data collection, no tracking, no selling"
-    }
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentFeature((prev) => (prev + 1) % zkFeatures.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [zkFeatures.length]);
 
   const handleVerification = async () => {
     setIsVerifying(true);
@@ -44,76 +19,122 @@ export function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-background">
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-background" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-        
-        {/* Floating Particles */}
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.3, 1, 0.3],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
+    <section id="home" className="min-h-screen flex items-center relative overflow-hidden" style={{ backgroundColor: '#000000', color: '#ffffff' }}>
+      {/* 3D Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="w-full h-full bg-black"></div>
+      </div>
+      
+      {/* 3D Protection Shield Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Large 3D Protection Shield */}
+        <div className="absolute top-1/2 right-10 lg:right-20 transform -translate-y-1/2">
+          <div className="w-80 h-80 lg:w-96 lg:h-96 relative">
+            {/* Outer Shield Ring */}
+            <div className="absolute inset-0 border-2 border-white/20 rounded-full animate-spin-slow">
+              <div className="absolute top-4 left-4 right-4 bottom-4 border border-white/30 rounded-full animate-pulse">
+                <div className="absolute top-8 left-8 right-8 bottom-8 border border-white/40 rounded-full">
+                  {/* Center Eye Shield Logo */}
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24">
+                    <svg viewBox="0 0 200 200" className="w-full h-full text-white">
+                      {/* Shield outline */}
+                      <path
+                        d="M100 20 L160 50 L160 120 Q160 160, 100 180 Q40 160, 40 120 L40 50 Z"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        fill="none"
+                        className="animate-pulse"
+                      />
+                      {/* Eye in center */}
+                      <ellipse cx="100" cy="100" rx="35" ry="20" stroke="currentColor" strokeWidth="2" fill="none" />
+                      <circle cx="100" cy="100" r="8" fill="currentColor" />
+                      {/* Protection lines */}
+                      <path d="M70 80 Q100 70, 130 80" stroke="currentColor" strokeWidth="1" fill="none" />
+                      <path d="M70 120 Q100 130, 130 120" stroke="currentColor" strokeWidth="1" fill="none" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Floating Protection Nodes */}
+            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white/30 rounded-full animate-bounce"></div>
+            <div className="absolute top-1/2 -right-8 transform -translate-y-1/2 w-3 h-3 bg-white/40 rounded-full animate-pulse"></div>
+            <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white/30 rounded-full animate-bounce" style={{animationDelay: '0.5s'}}></div>
+            <div className="absolute top-1/2 -left-8 transform -translate-y-1/2 w-3 h-3 bg-white/40 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+          </div>
+        </div>
+
+        {/* 3D Protection Cards */}
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="absolute top-16 right-8 lg:top-20 lg:right-32 glass p-3 lg:p-4 rounded-xl border border-white/20 backdrop-blur-xl"
+        >
+          <div className="flex items-center space-x-2 mb-2">
+            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+            <span className="text-xs text-white/80 font-bold">PROTECTION ACTIVE</span>
+          </div>
+          <div className="text-sm text-white font-bold">ZERO-KNOWLEDGE SHIELD</div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 1.2 }}
+          className="absolute bottom-24 right-12 lg:bottom-32 lg:right-40 glass p-4 lg:p-6 rounded-xl border border-white/20 backdrop-blur-xl"
+        >
+          <div className="flex items-center space-x-3 mb-3">
+            <Lock className="h-5 w-5 text-white" />
+            <span className="text-white font-bold">ENCRYPTED VAULT</span>
+          </div>
+          <div className="text-xs text-white/80 font-bold">MILITARY-GRADE PROTECTION</div>
+          <div className="text-xs text-white/80 font-bold">FOR ALL DATA</div>
+        </motion.div>
+
+        {/* 3D Geometric Protection Elements */}
+        <div className="absolute top-40 right-10">
+          <div className="w-16 h-16 border border-white/30 rotate-45 animate-spin-slow"></div>
+        </div>
+        <div className="absolute bottom-40 right-16">
+          <div className="w-12 h-12 border border-white/20 rounded-full animate-pulse"></div>
+        </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
-          >
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
+          {/* Left Side - Text Content */}
+          <div className="text-left space-y-8" style={{ color: '#ffffff' }}>
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-8"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center px-6 py-3 rounded-full border-2 border-white/30 bg-white/10 backdrop-blur-sm"
             >
-              <Star className="h-4 w-4 text-primary mr-2" />
-              <span className="text-sm text-primary font-medium">Zero-Knowledge Technology</span>
+              <Shield className="h-5 w-5 text-white mr-3" />
+              <span className="text-3d-neon text-white text-sm font-bold tracking-wider uppercase">ZERO-KNOWLEDGE PROTECTION</span>
             </motion.div>
 
-            {/* Main Heading */}
+            {/* Main Heading - Enhanced 3D */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-3d-title text-white mb-8 leading-tight"
             >
-              <span className="bg-gradient-to-r from-foreground via-foreground to-foreground bg-clip-text text-transparent">
-                Verify Your Identity
-              </span>
+              VERIFY YOUR IDENTITY
               <br />
-              <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                Without Revealing It
-              </span>
+              WITHOUT REVEALING IT
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg text-foreground mb-8 max-w-2xl mx-auto lg:mx-0"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-3d-body text-lg text-white/90 max-w-2xl leading-relaxed"
             >
               Revolutionary zk-SNARKs technology enables you to prove your age, nationality, 
               or credentials without exposing any personal information. Complete privacy, 
@@ -122,103 +143,56 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button
+              <button
                 onClick={handleVerification}
                 disabled={isVerifying || isVerified}
-                className="bg-primary hover:bg-primary/80 text-primary-foreground px-8 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center"
+                className="btn-primary group"
               >
                 {isVerifying ? (
                   <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-foreground mr-2"></div>
-                    Generating Proof...
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-current mr-3"></div>
+                    GENERATING PROOF...
                   </>
                 ) : isVerified ? (
                   <>
-                    <CheckCircle className="h-5 w-5 mr-2" />
-                    Identity Verified
+                    <CheckCircle className="h-5 w-5 mr-3 text-white" />
+                    IDENTITY VERIFIED
                   </>
                 ) : (
                   <>
-                    <Shield className="h-5 w-5 mr-2" />
-                    Start Verification
+                    <Shield className="h-5 w-5 mr-3 group-hover:text-white transition-colors" />
+                    START VERIFICATION
                   </>
                 )}
-              </Button>
+              </button>
               
-              <Button
-                variant="outline"
-                className="border-primary/50 text-primary hover:bg-primary/10 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
-              >
-                Learn More
-                <ArrowRight className="h-5 w-5 ml-2" />
-              </Button>
+              <button className="btn-secondary group">
+                LEARN MORE
+                <ArrowRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform" />
+              </button>
             </motion.div>
+          </div>
 
-
-          </motion.div>
-
-          {/* Right Column - Interactive Demo */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative"
-          >
-            {/* Feature Showcase */}
-            <div className="bg-card/80 backdrop-blur-lg border border-border rounded-2xl p-8">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentFeature}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-center"
-                >
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary to-primary/80 rounded-full mb-6">
-                    {zkFeatures[currentFeature].icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-card-foreground mb-3">
-                    {zkFeatures[currentFeature].title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {zkFeatures[currentFeature].description}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Feature Indicators */}
-              <div className="flex justify-center mt-8 space-x-2">
-                {zkFeatures.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentFeature(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentFeature 
-                        ? 'bg-primary w-8' 
-                        : 'bg-border hover:bg-muted-foreground'
-                    }`}
-                  />
-                ))}
+          {/* Right Side - 3D Protection Visualization */}
+          <div className="relative lg:block hidden">
+            {/* Additional 3D Elements for Balance */}
+            <div className="w-full h-96 flex items-center justify-center">
+              <div className="text-center text-white/20">
+                <div className="w-32 h-32 border-2 border-white/10 rounded-full mx-auto mb-4 animate-pulse"></div>
+                <p className="text-sm font-bold">3D PROTECTION ACTIVE</p>
               </div>
             </div>
-
-            {/* Floating Elements */}
-            <motion.div
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -top-4 -right-4 bg-gradient-to-r from-primary to-primary/80 rounded-full p-3"
-            >
-              <Zap className="h-6 w-6 text-primary-foreground" />
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <ScrollIndicator3D />
     </section>
   );
 }

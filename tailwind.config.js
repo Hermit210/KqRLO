@@ -123,6 +123,12 @@ module.exports = {
         'privacy-gradient': 'linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%)',
         'dark-gradient': 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
         'matrix-bg': 'linear-gradient(0deg, transparent 0%, rgba(14, 165, 233, 0.1) 50%, transparent 100%)',
+        'cyber-grid': 'linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px)',
+      },
+      perspective: {
+        '1000': '1000px',
+        '1500': '1500px',
+        '2000': '2000px',
       },
     },
   },

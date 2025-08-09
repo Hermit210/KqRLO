@@ -1,149 +1,231 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, Award, Shield, Target } from 'lucide-react';
+import { Shield, Users, Globe, Zap, TrendingUp, Award, Lock, Eye, Database, Cpu } from 'lucide-react';
+
+const stats = [
+  { icon: <Users className="h-10 w-10 text-white" />, value: '100K+', label: 'PROTECTED IDENTITIES' },
+  { icon: <Shield className="h-10 w-10 text-white" />, value: '99.99%', label: 'SECURITY UPTIME' },
+  { icon: <Globe className="h-10 w-10 text-white" />, value: '150+', label: 'COUNTRIES SERVED' },
+  { icon: <Zap className="h-10 w-10 text-white" />, value: '<50ms', label: 'VERIFICATION SPEED' },
+];
+
+const values = [
+  {
+    icon: <Shield className="h-16 w-16 text-white" />,
+    title: 'PRIVACY FORTRESS',
+    description: 'WE BUILD IMPENETRABLE DIGITAL FORTRESSES AROUND YOUR IDENTITY. YOUR PERSONAL DATA IS ENCRYPTED, SHARDED, AND PROTECTED BY MILITARY-GRADE CRYPTOGRAPHIC PROTOCOLS.'
+  },
+  {
+    icon: <TrendingUp className="h-16 w-16 text-white" />,
+    title: 'INNOVATION VANGUARD',
+    description: 'PIONEERING THE NEXT GENERATION OF IDENTITY VERIFICATION WITH QUANTUM-RESISTANT ALGORITHMS AND AI-POWERED THREAT DETECTION SYSTEMS.'
+  },
+  {
+    icon: <Award className="h-16 w-16 text-white" />,
+    title: 'SECURITY EXCELLENCE',
+    description: 'UNCOMPROMISING COMMITMENT TO THE HIGHEST SECURITY STANDARDS WITH CONTINUOUS AUDITS, PENETRATION TESTING, AND ZERO-TRUST ARCHITECTURE.'
+  },
+];
 
 export function About() {
-
-  const stats = [
-    { number: "50+", label: "Privacy Patents" },
-    { number: "10M+", label: "Users Protected" },
-    { number: "99.9%", label: "Uptime" },
-    { number: "0", label: "Data Breaches" }
-  ];
-
   return (
-    <section id="about" className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="min-h-screen py-20 bg-black relative overflow-hidden">
+      {/* 3D Hexagonal Protection Grid */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}></div>
+      </div>
+
+      {/* Floating 3D Security Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* 3D Security Nodes */}
+        <div className="absolute top-20 left-10 w-6 h-6 bg-white/20 rounded-full animate-pulse"></div>
+        <div className="absolute top-32 right-16 w-4 h-4 border-2 border-white/30 rotate-45 animate-spin-slow"></div>
+        <div className="absolute bottom-40 left-20 w-8 h-8 border border-white/25 rounded-full animate-bounce"></div>
+        <div className="absolute bottom-20 right-32 w-5 h-5 bg-white/15 rotate-12 animate-pulse"></div>
+        
+        {/* Large 3D Protection Sphere */}
+        <div className="absolute top-1/2 right-10 transform -translate-y-1/2">
+          <div className="w-64 h-64 relative">
+            <div className="absolute inset-0 border-2 border-white/10 rounded-full animate-spin-slow"></div>
+            <div className="absolute inset-4 border border-white/20 rounded-full animate-pulse"></div>
+            <div className="absolute inset-8 border border-white/30 rounded-full"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <Lock className="h-12 w-12 text-white/40" />
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
-            <Users className="h-4 w-4 text-primary mr-2" />
-            <span className="text-sm text-primary font-medium">About KqRLO</span>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-foreground to-foreground bg-clip-text text-transparent">
-              Pioneering Privacy-First Identity
-            </span>
+          <h2 className="text-3d-title text-white mb-8 leading-tight">
+            ABOUT
+            <br />
+            <span className="text-3d-embossed text-white/80">KQRLO</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Building the future of digital identity with cutting-edge zero-knowledge technology and uncompromising privacy standards.
+          <p className="text-3d-body text-xl text-white font-bold max-w-4xl mx-auto leading-relaxed">
+            We&apos;re building the future of digital identity verification, where privacy
+            and security aren&apos;t just features—they&apos;re fundamental principles
+            embedded in every line of code.
           </p>
         </motion.div>
 
-        {/* Mission Statement */}
+        {/* Stats Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-card border border-border rounded-2xl p-8 mb-16 shadow-lg"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold text-card-foreground mb-4">Our Mission</h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                We believe privacy is a fundamental human right in the digital age. KqRLO is building the infrastructure 
-                for a world where you can prove who you are without revealing who you are. Our zero-knowledge identity 
-                verification platform empowers individuals to maintain complete control over their personal data while 
-                participating in the digital economy.
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-primary rounded-full" />
-                  <span className="text-muted-foreground">Privacy by design from day one</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-primary rounded-full" />
-                  <span className="text-muted-foreground">Open source and auditable</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-primary rounded-full" />
-                  <span className="text-muted-foreground">User-controlled data ownership</span>
-                </div>
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-16 w-16 text-primary-foreground" />
-              </div>
-              <h4 className="text-card-foreground font-semibold mb-2">Zero-Knowledge First</h4>
-              <p className="text-muted-foreground text-sm">
-                Every feature built with privacy as the core principle
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
         >
           {stats.map((stat, index) => (
             <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-card border border-border rounded-xl p-6 text-center hover:bg-muted hover:border-primary/30 transition-all duration-300"
+              className="text-center group"
             >
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
-                {stat.number}
+              <div className="flex justify-center mb-6">
+                <div className="relative">
+                  <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/30 backdrop-blur-sm group-hover:border-white/50 transition-all duration-300">
+                    {stat.icon}
+                  </div>
+                  <div className="absolute inset-0 bg-white/5 rounded-2xl blur-xl group-hover:bg-white/10 transition-all duration-300"></div>
+                </div>
               </div>
-              <div className="text-muted-foreground text-sm font-medium">{stat.label}</div>
+              <div className="text-4xl font-black text-white mb-2">
+                {stat.value}
+              </div>
+              <div className="text-white/80 font-bold tracking-wide">
+                {stat.label}
+              </div>
             </motion.div>
           ))}
         </motion.div>
 
-
-
-        {/* Values */}
+        {/* Mission Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-card border border-border rounded-2xl p-8 shadow-lg"
+          className="text-center mb-20"
         >
-          <h3 className="text-2xl font-bold text-card-foreground mb-8 text-center">Our Values</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-8 w-8 text-primary-foreground" />
+          <h3 className="text-4xl font-black text-white mb-8">
+            OUR MISSION
+          </h3>
+          <p className="text-xl text-white font-bold max-w-4xl mx-auto leading-relaxed">
+            To democratize identity verification by making it accessible, secure, and private for everyone.
+            We envision a world where individuals have complete control over their digital identity,
+            free from the constraints of centralized authorities and the risks of data breaches.
+          </p>
+        </motion.div>
+
+        {/* Values Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <h3 className="text-3d-subtitle text-white text-center mb-16">
+            OUR VALUES
+          </h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 * index }}
+                viewport={{ once: true }}
+                className="group relative"
+              >
+                {/* 3D Card Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 rounded-2xl backdrop-blur-sm border border-white/20 transform group-hover:scale-105 transition-all duration-300"></div>
+                
+                {/* Card Content */}
+                <div className="relative p-8 text-center">
+                  <div className="flex justify-center mb-6">
+                    <div className="relative">
+                      <div className="w-24 h-24 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/30 backdrop-blur-sm group-hover:border-white/50 transition-all duration-300">
+                        {value.icon}
+                      </div>
+                      <div className="absolute inset-0 bg-white/5 rounded-2xl blur-xl group-hover:bg-white/10 transition-all duration-300"></div>
+                    </div>
+                  </div>
+                  <h4 className="text-2xl font-black text-white mb-4 tracking-wide">
+                    {value.title}
+                  </h4>
+                  <p className="text-white/90 font-bold leading-relaxed">
+                    {value.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Technology Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-12 items-center"
+        >
+          <div>
+            <h3 className="text-4xl font-black text-white mb-8">
+              CUTTING-EDGE TECHNOLOGY
+            </h3>
+            <p className="text-xl text-white font-bold mb-8 leading-relaxed">
+              Built on the latest advancements in zero-knowledge cryptography and blockchain technology.
+              Our protocol leverages ZK-SNARKs to enable privacy-preserving identity verification
+              without compromising on security or usability.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center text-white">
+                <div className="w-3 h-3 bg-white rounded-full mr-4" />
+                <span className="font-bold">Zero-Knowledge Succinct Non-Interactive Arguments</span>
               </div>
-              <h4 className="text-card-foreground font-semibold mb-2">Privacy First</h4>
-              <p className="text-muted-foreground text-sm">
-                Every decision we make prioritizes user privacy and data protection.
-              </p>
+              <div className="flex items-center text-white">
+                <div className="w-3 h-3 bg-white rounded-full mr-4" />
+                <span className="font-bold">Quantum-Resistant Cryptographic Protocols</span>
+              </div>
+              <div className="flex items-center text-white">
+                <div className="w-3 h-3 bg-white rounded-full mr-4" />
+                <span className="font-bold">Decentralized Identity Standards (DID)</span>
+              </div>
+              <div className="flex items-center text-white">
+                <div className="w-3 h-3 bg-white rounded-full mr-4" />
+                <span className="font-bold">AI-Powered Threat Detection Systems</span>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Award className="h-8 w-8 text-white" />
+          </div>
+          <div className="relative">
+            <div className="w-full h-80 bg-white/5 rounded-2xl border-2 border-white/20 backdrop-blur-sm flex items-center justify-center">
+              <div className="text-center">
+                <div className="relative mb-6">
+                  <div className="w-24 h-24 bg-white/10 rounded-2xl flex items-center justify-center border-2 border-white/30 backdrop-blur-sm mx-auto">
+                    <Database className="h-12 w-12 text-white" />
+                  </div>
+                  <div className="absolute inset-0 bg-white/5 rounded-2xl blur-xl"></div>
+                </div>
+                <p className="text-xl font-bold text-white">SECURE ARCHITECTURE</p>
               </div>
-              <h4 className="text-card-foreground font-semibold mb-2">Innovation</h4>
-              <p className="text-muted-foreground text-sm">
-                Pushing the boundaries of what&apos;s possible with cutting-edge cryptography.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Target className="h-8 w-8 text-white" />
-              </div>
-              <h4 className="text-card-foreground font-semibold mb-2">Accessibility</h4>
-              <p className="text-muted-foreground text-sm">
-                Making advanced privacy technology accessible to everyone, everywhere.
-              </p>
             </div>
           </div>
         </motion.div>
